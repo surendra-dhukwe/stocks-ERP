@@ -143,7 +143,52 @@ res.send("Download Error");
 
 });
 
+/* ================= TRANSACTION EXCEL DOWNLOAD ================= */
 
+app.get("/transaction-report/download", async (req,res)=>{
+
+try{
+
+const [rows] = await db.query(`
+
+SELECT
+code,
+name,
+total_quantity,
+type,
+entry_date
+
+FROM transactions
+
+ORDER BY entry_date DESC
+
+`);
+
+let csv = "Code,Name,Quantity,Type,Date\n";
+
+rows.forEach(row=>{
+
+csv += `${row.code},${row.name},${row.total_quantity},${row.type},${row.entry_date}\n`;
+
+});
+
+res.header("Content-Type","text/csv");
+
+res.attachment("transaction_report.csv");
+
+res.send(csv);
+
+}
+
+catch(err){
+
+console.log(err);
+
+res.status(500).send("Download Error");
+
+}
+
+});
 
 /* ================= TEST ================= */
 

@@ -1,5 +1,5 @@
 /* ===========================
-GLOBAL ERP STYLE
+GLOBAL RESET
 =========================== */
 
 *{
@@ -12,8 +12,7 @@ body{
 
 font-family:Segoe UI,Arial;
 
-background:
-radial-gradient(circle at top left,#1f2a44,#0f172a);
+background:radial-gradient(circle at top left,#1f2a44,#0f172a);
 
 min-height:100vh;
 
@@ -21,27 +20,28 @@ color:#222;
 
 text-align:center;
 
-animation:fadePage 1s;
+animation:fadePage .8s ease;
 
 }
 
 
-/* PAGE LOAD ANIMATION */
+/* ===========================
+PAGE LOAD
+=========================== */
 
 @keyframes fadePage{
 
 from{
 opacity:0;
-transform:translateY(25px);
+transform:translateY(20px);
 }
 
 to{
 opacity:1;
-transform:translateY(0px);
+transform:translateY(0);
 }
 
 }
-
 
 
 /* ===========================
@@ -50,8 +50,7 @@ HEADER
 
 h2{
 
-background:
-linear-gradient(90deg,#0f2027,#203a43,#2c5364);
+background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);
 
 color:white;
 
@@ -61,16 +60,31 @@ font-size:28px;
 
 letter-spacing:2px;
 
-box-shadow:0px 6px 25px rgba(0,0,0,0.6);
+box-shadow:0 6px 25px rgba(0,0,0,0.6);
 
 margin-bottom:35px;
+
+animation:slideDown .7s ease;
+
+}
+
+@keyframes slideDown{
+
+from{
+transform:translateY(-40px);
+opacity:0;
+}
+
+to{
+transform:translateY(0);
+opacity:1;
+}
 
 }
 
 
-
 /* ===========================
-CARD STYLE
+CARD / BOX STYLE
 =========================== */
 
 .login-box,
@@ -79,7 +93,7 @@ CARD STYLE
 .searchBox,
 table{
 
-background:rgba(255,255,255,0.95);
+background:rgba(255,255,255,0.96);
 
 width:85%;
 
@@ -91,9 +105,23 @@ padding:25px;
 
 border-radius:18px;
 
-box-shadow:0px 15px 40px rgba(0,0,0,0.4);
+box-shadow:0 15px 40px rgba(0,0,0,0.35);
 
-animation:cardFade 1s;
+animation:cardFade .8s;
+
+transition:.3s;
+
+}
+
+.login-box:hover,
+.options:hover,
+.addBox:hover,
+.searchBox:hover,
+table:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 20px 45px rgba(0,0,0,.45);
 
 }
 
@@ -113,20 +141,19 @@ transform:scale(1);
 }
 
 
-
 /* ===========================
-BUTTON DESIGN
+BUTTONS
 =========================== */
 
 button{
 
-padding:18px 45px;
+padding:16px 40px;
 
 margin:12px;
 
-font-size:18px;
+font-size:17px;
 
-border-radius:12px;
+border-radius:10px;
 
 border:none;
 
@@ -134,33 +161,27 @@ cursor:pointer;
 
 font-weight:600;
 
-background:
-linear-gradient(135deg,#4b6cb7,#182848);
-
 color:white;
 
-letter-spacing:1px;
+letter-spacing:.5px;
 
-box-shadow:0px 8px 20px rgba(0,0,0,0.4);
+box-shadow:0 6px 16px rgba(0,0,0,.35);
 
-transition:0.3s;
+transition:.25s;
 
-min-width:240px;
+min-width:230px;
 
 }
-
 
 button:hover{
 
-transform:translateY(-4px);
+transform:translateY(-3px);
 
-box-shadow:0px 15px 35px rgba(0,0,0,0.5);
+box-shadow:0 12px 25px rgba(0,0,0,.45);
 
-background:
-linear-gradient(135deg,#182848,#4b6cb7);
+filter:brightness(1.08);
 
 }
-
 
 button:active{
 
@@ -169,9 +190,45 @@ transform:scale(.95);
 }
 
 
+/* ===========================
+DASHBOARD COLORS
+=========================== */
+
+.dispatchBtn{
+
+background:#e74c3c;
+
+}
+
+.receiveBtn{
+
+background:#27ae60;
+
+}
+
+.downloadBtn{
+
+background:#0b3d0b;
+
+}
+
+.productBtn{
+
+background:#2ecc71;
+
+}
+
+.reportBtn{
+
+background:#f39c12;
+
+color:black;
+
+}
+
 
 /* ===========================
-INPUT BOX
+INPUTS
 =========================== */
 
 input,
@@ -189,12 +246,11 @@ border-radius:10px;
 
 border:1px solid #ddd;
 
-transition:0.3s;
+transition:.3s;
 
-box-shadow:0px 2px 8px rgba(0,0,0,0.1);
+box-shadow:0 2px 8px rgba(0,0,0,.12);
 
 }
-
 
 textarea{
 
@@ -204,7 +260,6 @@ resize:none;
 
 }
 
-
 input:focus,
 textarea:focus{
 
@@ -212,10 +267,11 @@ outline:none;
 
 border:1px solid #4b6cb7;
 
-box-shadow:0px 0px 10px #4b6cb7;
+box-shadow:0 0 10px #4b6cb7;
+
+transform:scale(1.02);
 
 }
-
 
 
 /* ===========================
@@ -230,18 +286,62 @@ margin-top:150px;
 
 }
 
-
-
 .login-box input{
 
 width:320px;
 
 }
 
+/* ===========================
+LOGIN BUTTON
+=========================== */
 
+.loginBtn{
+
+background:linear-gradient(135deg,#4b6cb7,#182848);
+
+color:white;
+
+font-weight:600;
+
+letter-spacing:1px;
+
+}
+
+.loginBtn:hover{
+
+background:linear-gradient(135deg,#182848,#4b6cb7);
+
+transform:translateY(-3px);
+
+box-shadow:0px 12px 30px rgba(0,0,0,0.4);
+
+}
+
+.insertRowBtn{
+  padding: 10px 20px;
+  background: linear-gradient(45deg,#004d60,#005eff);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.insertRowBtn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.insertRowBtn:active{
+  transform: scale(0.95);
+}
 
 /* ===========================
-TABLE DESIGN
+TABLE
 =========================== */
 
 table{
@@ -256,11 +356,9 @@ overflow:hidden;
 
 }
 
-
 th{
 
-background:
-linear-gradient(90deg,#141e30,#243b55);
+background:linear-gradient(90deg,#141e30,#243b55);
 
 color:white;
 
@@ -270,7 +368,6 @@ font-size:16px;
 
 }
 
-
 td{
 
 padding:14px;
@@ -279,13 +376,11 @@ border-bottom:1px solid #eee;
 
 }
 
-
 tr{
 
-transition:0.3s;
+transition:.25s;
 
 }
-
 
 tr:hover{
 
@@ -294,7 +389,6 @@ background:#eef3ff;
 transform:scale(1.01);
 
 }
-
 
 
 /* ===========================
@@ -312,7 +406,6 @@ font-size:18px;
 }
 
 
-
 /* ===========================
 STOCK COLORS
 =========================== */
@@ -327,7 +420,6 @@ font-size:17px;
 
 }
 
-
 .stockRed{
 
 color:#e74c3c;
@@ -339,9 +431,8 @@ font-size:17px;
 }
 
 
-
 /* ===========================
-DISPATCH RECEIVE COLORS
+TRANSACTION TYPE
 =========================== */
 
 .dispatch{
@@ -361,7 +452,6 @@ font-weight:bold;
 }
 
 
-
 /* ===========================
 SEARCH BOX
 =========================== */
@@ -373,9 +463,8 @@ width:420px;
 }
 
 
-
 /* ===========================
-ITEM TABLE
+ITEM TABLE INPUT
 =========================== */
 
 #itemTable input{
@@ -384,7 +473,31 @@ width:130px;
 
 }
 
+/* ===========================
+ADD ITEM BUTTON
+=========================== */
 
+.addItemBtn{
+
+background:linear-gradient(135deg,#156397,#025b7b);
+
+color:white;
+
+font-weight:600;
+
+letter-spacing:1px;
+
+}
+
+.addItemBtn:hover{
+
+background:linear-gradient(135deg,#1f6694,#4facfe);
+
+transform:translateY(-3px);
+
+box-shadow:0px 12px 30px rgba(0,0,0,0.4);
+
+}
 
 /* ===========================
 SCROLLBAR
@@ -411,13 +524,382 @@ border-radius:10px;
 }
 
 
-
 /* ===========================
-SMOOTH EFFECT
+DOWNLOAD MENU
 =========================== */
 
-button,input,table{
+.stock-menu{
 
-transition:all .3s;
+position:relative;
+
+display:inline-block;
+
+}
+
+#stockOptions{
+
+display:none;
+
+position:absolute;
+
+top:55px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+background:white;
+
+padding:10px;
+
+border-radius:10px;
+
+box-shadow:0 6px 20px rgba(0,0,0,.3);
+
+z-index:100;
+
+animation:menuFade .3s ease;
+
+}
+
+@keyframes menuFade{
+
+from{
+opacity:0;
+transform:translate(-50%,10px);
+}
+
+to{
+opacity:1;
+transform:translate(-50%,0);
+}
+
+}
+
+#stockOptions button{
+
+display:block;
+
+width:200px;
+
+margin:8px auto;
+
+padding:10px;
+
+font-size:15px;
+
+background:#3498db;
+
+color:white;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+#stockOptions button:hover{
+
+background:#2980b9;
+
+}
+
+
+/* ===========================
+TRANSACTION DOWNLOAD BUTTON
+=========================== */
+
+#stockOptions button:last-child{
+
+background:linear-gradient(135deg,#16a085,#0f7a63);
+
+}
+
+#stockOptions button:last-child:hover{
+
+background:linear-gradient(135deg,#0f7a63,#16a085);
+
+box-shadow:0 8px 20px rgba(0,0,0,.35);
+
+}
+
+/* ===========================
+DASHBOARD MENU SYSTEM
+=========================== */
+
+.menu-container{
+
+display:flex;
+
+justify-content:center;
+
+gap:30px;
+
+flex-wrap:wrap;
+
+margin-top:30px;
+
+}
+
+.menu{
+
+position:relative;
+
+display:inline-block;
+
+}
+
+/* DROPDOWN PANEL */
+
+.menu-content{
+
+display:none;
+
+position:absolute;
+
+top:65px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+background:white;
+
+border-radius:12px;
+
+padding:10px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+animation:menuFade .3s ease;
+
+z-index:50;
+
+}
+
+/* DROPDOWN BUTTONS */
+
+.menu-content button{
+
+display:block;
+
+width:210px;
+
+margin:8px auto;
+
+padding:12px;
+
+font-size:15px;
+
+border-radius:8px;
+
+border:none;
+
+cursor:pointer;
+
+transition:.25s;
+
+box-shadow:0 4px 12px rgba(0,0,0,.25);
+
+}
+
+/* REPORT BUTTON COLORS */
+
+.finalStockBtn{
+
+background:#f39c12;
+
+color:black;
+
+}
+
+.productListBtn{
+
+background:#2ecc71;
+
+color:white;
+
+}
+
+.finalStockBtn:hover{
+
+background:#e67e22;
+
+}
+
+.productListBtn:hover{
+
+background:#27ae60;
+
+}
+
+/* OPEN MENU */
+
+.menu.active .menu-content{
+
+display:block;
+
+}
+
+/* ===========================
+MENU CONTAINER
+=========================== */
+
+.menu{
+
+position:relative;
+
+display:inline-block;
+
+margin:15px;
+
+}
+
+
+/* ===========================
+MAIN MENU BUTTON
+=========================== */
+
+.menu button{
+
+min-width:220px;
+
+}
+
+
+/* ===========================
+DROPDOWN MENU
+=========================== */
+
+.menu-content{
+
+display:none;
+
+position:absolute;
+
+top:60px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+background:white;
+
+padding:12px;
+
+border-radius:10px;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.35);
+
+z-index:100;
+
+animation:menuFade .3s ease;
+
+}
+
+
+/* MENU BUTTONS */
+
+.menu-content button{
+
+display:block;
+
+width:200px;
+
+margin:8px auto;
+
+padding:10px;
+
+font-size:15px;
+
+border:none;
+
+border-radius:6px;
+
+cursor:pointer;
+
+color:white;
+
+font-weight:600;
+
+transition:.25s;
+
+}
+
+
+/* ===========================
+COLORS
+=========================== */
+
+/* Final Stock */
+
+.finalStockBtn{
+
+background:linear-gradient(135deg,#3498db,#21618c);
+
+}
+
+.finalStockBtn:hover{
+
+background:linear-gradient(135deg,#21618c,#3498db);
+
+}
+
+
+/* Transaction */
+
+.transactionBtn{
+
+background:linear-gradient(135deg,#16a085,#0f7a63);
+
+}
+
+.transactionBtn:hover{
+
+background:linear-gradient(135deg,#0f7a63,#16a085);
+
+}
+
+
+/* Product List */
+
+.productListBtn{
+
+background:linear-gradient(135deg,#27ae60,#145a32);
+
+}
+
+.productListBtn:hover{
+
+background:linear-gradient(135deg,#145a32,#27ae60);
+
+}
+
+
+/* ===========================
+ANIMATION
+=========================== */
+
+@keyframes menuFade{
+
+from{
+
+opacity:0;
+
+transform:translate(-50%,10px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translate(-50%,0);
+
+}
 
 }

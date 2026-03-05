@@ -1,15 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Login</title>
+
 <link rel="stylesheet" href="css/style.css">
+
 </head>
+
 <body>
+
 <div class="login-box">
-  <h2>Stock ERP Login</h2>
-  <input type="text" placeholder="Username">
-  <input type="password" placeholder="Password">
-  <button onclick="window.location='dashboard.html'">Login</button>
+
+<h2>Stock ERP Login</h2>
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()" class="loginBtn">
+Login
+</button>
+
 </div>
+
+
+<script>
+
+/* LOGIN FUNCTION */
+
+function login(){
+
+const username=document.getElementById("username").value;
+
+const password=document.getElementById("password").value;
+
+
+/* CHECK USERNAME PASSWORD */
+
+if(username==="Admin" && password==="Admin@123"){
+
+alert("Login Successful");
+
+window.location="dashboard.html";
+
+}
+
+else{
+
+alert("Invalid Username or Password");
+
+}
+
+}
+
+</script>
+
 </body>
 </html>

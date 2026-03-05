@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <title>Stock ERP Dashboard</title>
 
 <link rel="stylesheet" href="css/style.css">
@@ -11,86 +12,90 @@
 
 <h2>Stock ERP Dashboard</h2>
 
+<div class="menu-container">
 
-<div id="stock-options" class="options">
 
-<button onclick="openPage('dispatch')">
+<!-- DISPATCH / RECEIVE -->
+
+<div class="options">
+
+<button class="dispatchBtn" onclick="openPage('dispatch')">
 Dispatch
 </button>
 
-<button onclick="openPage('receive')">
+<button class="receiveBtn" onclick="openPage('receive')">
 Receiving
 </button>
 
 </div>
 
-<button onclick="downloadFinalStock()">
 
-Download Final Stock Excel
 
+<!-- DOWNLOAD STOCK MENU -->
+
+<div class="menu">
+
+<button class="downloadBtn" onclick="toggleMenu(this)">
+Download Stock
 </button>
 
-<br><br>
+<div class="menu-content">
 
-<button onclick="window.location.href='products.html'">
+<button class="menuBtn finalStockBtn" onclick="downloadFinalStock()">
+Final Stock Excel
+</button>
+
+<button class="menuBtn transactionBtn" onclick="downloadTransactionExcel()">
+Transaction Excel
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- REPORT MENU -->
+
+<div class="menu">
+
+<button class="reportBtn" onclick="toggleMenu(this)">
+Reports
+</button>
+
+<div class="menu-content">
+
+<button class="finalStockBtn"
+onclick="window.location.href='stock-report.html'">
+Final Stock Report
+</button>
+
+<button class="productListBtn"
+onclick="window.location.href='products.html'">
 Products List
 </button>
 
-<br><br><br>
-<button onclick="window.location.href='stock-report.html'">
-Final Stock Report
-</button>
+</div>
+
+</div>
+
+</div>
 
 
 
 <script>
 
+
 function openPage(type){
 
-// Save type
-localStorage.setItem("type", type);
-
-console.log("Saved Type =",type);
-
-// Open page
-if(type==="dispatch"){
-window.location.href="dispatch.html";
-}
-else{
-window.location.href="receive.html";
-}
-
-}
-
-function toggleOptions(stockId){
-
-const el = document.getElementById(stockId+"-options");
-
-if(el.style.display === "none"){
-
-el.style.display="block";
-
-}
-else{
-
-el.style.display="none";
-
-}
-
-}
-
-
-function openPage(type,stock){
-
-localStorage.setItem("stockType",stock);
+localStorage.setItem("type",type);
 
 if(type==="dispatch"){
 
 window.location.href="dispatch.html";
 
 }
-
-if(type==="receive"){
+else{
 
 window.location.href="receive.html";
 
@@ -99,6 +104,8 @@ window.location.href="receive.html";
 }
 
 
+
+/* DOWNLOAD */
 
 function downloadFinalStock(){
 
@@ -106,8 +113,44 @@ window.location.href="http://localhost:3000/final-stock/download";
 
 }
 
+function downloadTransactionExcel(){
+
+window.location.href="http://localhost:3000/transaction-report/download";
+
+}
+
+
+
+/* MENU OPEN CLOSE */
+
+function toggleMenu(btn){
+
+const menu = btn.parentElement;
+
+menu.classList.toggle("active");
+
+}
+
+function toggleMenu(button){
+
+const menu = button.nextElementSibling;
+
+const allMenus = document.querySelectorAll(".menu-content");
+
+allMenus.forEach(m=>{
+if(m !== menu){
+m.style.display="none";
+}
+});
+
+menu.style.display =
+menu.style.display === "block" ? "none" : "block";
+
+}
+
+
 </script>
 
-
 </body>
+
 </html>
