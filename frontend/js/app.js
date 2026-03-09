@@ -302,7 +302,7 @@ type="receive";
 
 
 const items=[];
-
+const entryDate=document.getElementById("entryDate").value;
 
 document.querySelectorAll("#itemTable tbody tr").forEach(row=>{
 
@@ -341,11 +341,9 @@ headers:{
 },
 
 body:JSON.stringify({
-
 type:type,
-
+date:entryDate,
 items:items
-
 })
 
 })
